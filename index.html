@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forma — дизайн и вдохновение</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #f6f5f1;
+  --ink: #171717;
+  --lime: #d8fb62;
+  --muted: #77776f;
+  --line: #e5e4dc;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Manrope, Arial, sans-serif;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1150px;
+  padding: 0 25px;
+  margin: auto;
+}
+
+header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.logo span { color: #91b72b; }
+
+nav {
+  display: flex;
+  gap: 25px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+nav a:hover { color: #7d9e20; }
+
+.header-btn {
+  padding: 12px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 30px;
+  align-items: center;
+  padding: 75px 0;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 1;
+  letter-spacing: -5px;
+  margin: 25px 0;
+}
+
+h1 em {
+  color: #8eaf28;
+  font-style: normal;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 15px;
+  max-width: 480px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 22px;
+  margin: 12px 8px 0 0;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid var(--ink);
+}
+
+.btn.dark {
+  background: var(--ink);
+  color: white;
+}
+
+.art {
+  min-height: 320px;
+  background: var(--lime);
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.circle {
+  width: 220px;
+  height: 220px;
+  border: 1px solid #171717;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 1px solid #171717;
+  border-radius: 50%;
+}
+
+.circle strong {
+  background: #171717;
+  color: var(--lime);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  z-index: 1;
+}
+
+.art-label {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.section {
+  padding: 25px 0 75px;
+}
+
+.section h2 {
+  font-size: clamp(32px, 5vw, 45px);
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+}
+
+#search {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 18px;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+  background: white;
+}
+
+#search:focus { border-color: #91b72b; }
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  padding: 12px 15px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  cursor: pointer;
+  background: transparent;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.filter.active,
+.filter:hover {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px #0000000b;
+}
+
+.thumb {
+  height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  position: relative;
+}
+
+.pink { background: #f3c5ce; color: #542b3c; }
+.yellow { background: #f8d56a; color: #493b0e; }
+.blue { background: #b9d6ed; color: #1d3c56; }
+.purple { background: #d3c4f4; color: #392a65; }
+.green { background: #c8e7bc; color: #234a24; }
+.orange { background: #f1b28c; color: #542e19; }
+.black { background: #222; color: white; }
+.white { background: #eeede7; color: #292929; }
+
+.card-body { padding: 20px; }
+
+.category {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.card h3 {
+  margin: 13px 0 8px;
+  font-size: 21px;
+  letter-spacing: -.8px;
+}
+
+.card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  min-height: 60px;
+}
+
+.visit {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.visit:hover { color: #78951e; }
+
+.empty {
+  display: none;
+  grid-column: 1 / -1;
+  padding: 30px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.about {
+  background: #171717;
+  color: white;
+  padding: 35px;
+  border-radius: 22px;
+  margin-bottom: 70px;
+}
+
+.about p {
+  color: #c0c0b8;
+  line-height: 1.8;
+  max-width: 650px;
+  font-size: 13px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; padding: 45px 0; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  nav { gap: 12px; }
+  .header-btn { display: none; }
+}
+
+@media (max-width: 540px) {
+  .container { padding: 0 16px; }
+  h1 { letter-spacing: -3px; }
+  .grid { grid-template-columns: 1fr; }
+  .art { min-height: 260px; }
+  nav { font-size: 11px; gap: 10px; }
+  footer { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <a class="logo" href="#">forma<span>.</span></a>
+  <nav>
+    <a href="#catalog">Каталог</a>
+    <a href="#about">О проекте</a>
+    <a href="#footer">Контакты</a>
+  </nav>
+  <a class="header-btn" href="#catalog">Исследовать ↗</a>
+</header>
+
+<main>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">✳ Твоя библиотека дизайна</div>
+
+    <h1>Идеи для<br>больших <em>идей.</em></h1>
+
+    <p>
+      Полезные сайты и инструменты для дизайнеров.
+      Находи вдохновение, изучай красивые проекты
+      и создавай собственный уникальный стиль.
+    </p>
+
+    <a class="btn dark" href="#catalog">Открыть каталог ↘</a>
+    <a class="btn" href="#about">О проекте</a>
+  </div>
+
+  <div class="art">
+    <div class="circle"><strong>✳</strong></div>
+    <div class="art-label">DESIGN · EXPLORE · CREATE</div>
+  </div>
+</section>
+
+<section class="section" id="catalog">
+  <div class="eyebrow">✳ Подборка ресурсов</div>
+  <h2>Твоя следующая<br>точка вдохновения.</h2>
+  <p class="section-desc">
+    Ищи сайты по названию или выбери нужную категорию.
+  </p>
+
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Найти ресурс...">
+
+    <div class="filters">
+      <button class="filter active" data-filter="Все">Все</button>
+      <button class="filter" data-filter="Вдохновение">Вдохновение</button>
+      <button class="filter" data-filter="Веб-дизайн">Веб-дизайн</button>
+      <button class="filter" data-filter="Шрифты">Шрифты</button>
+      <button class="filter" data-filter="Цвет">Цвет</button>
+      <button class="filter" data-filter="UI/UX">UI/UX</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <article class="card" data-category="Вдохновение"
+      data-name="pinterest вдохновение идеи">
+      <div class="thumb pink">p.</div>
+      <div class="card-body">
+        <span class="category">Вдохновение</span>
+        <h3>Pinterest</h3>
+        <p>Идеи, референсы, мудборды и визуальные коллекции для проектов.</p>
+        <a class="visit" href="https://pinterest.com" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="card" data-category="Вдохновение"
+      data-name="behance портфолио проекты">
+      <div class="thumb black">Bē</div>
+      <div class="card-body">
+        <span class="category">Вдохновение</span>
+        <h3>Behance</h3>
+        <p>Портфолио дизайнеров, брендинг, графика и творческие проекты.</p>
+        <a class="visit" href="https://behance.net" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="card" data-category="Веб-дизайн"
+      data-name="awwwards веб дизайн сайты">
+      <div class="thumb yellow">Aww.</div>
+      <div class="card-body">
+        <span class="category">Веб-дизайн</span>
+        <h3>Awwwards</h3>
+        <p>Подборка интересных сайтов и современных веб-решений.</p>
+        <a class="visit" href="https://awwwards.com" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="card" data-category="Веб-дизайн"
+      data-name="land book лендинги веб">
+      <div class="thumb blue">land.</div>
+      <div class="card-body">
+        <span class="category">Веб-дизайн</span>
+        <h3>Land-book</h3>
+        <p>Вдохновение для лендингов, главных страниц и сайтов компаний.</p>
+        <a class="visit" href="https://land-book.com" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="card" data-category="Шрифты"
+      data-name="google fonts шрифты типографика">
+      <div class="thumb purple">Ag</div>
+      <div class="card-body">
+        <span class="category">Шрифты</span>
+        <h3>Google Fonts</h3>
+        <p>Бесплатные шрифты для сайтов, интерфейсов и презентаций.</p>
+        <a class="visit" href="https://fonts.google.com" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="card" data-category="Цвет"
+      data-name="coolors палитры цвет">
+      <div class="thumb orange">◒</div>
+      <div class="card-body">
+        <span class="category">Цвет</span>
+        <h3>Coolors</h3>
+        <p>Создавай палитры и подбирай гармоничные цвета для дизайна.</p>
+        <a class="visit" href="https://coolors.co" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="card" data-category="UI/UX"
+      data-name="mobbin интерфейсы ui ux">
+      <div class="thumb green">ui/ux</div>
+      <div class="card-body">
+        <span class="category">UI/UX</span>
+        <h3>Mobbin</h3>
+        <p>Примеры интерфейсов и экранов популярных приложений.</p>
+        <a class="visit" href="https://mobbin.com" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="card" data-category="Вдохновение"
+      data-name="dribbble дизайн работы">
+      <div class="thumb white">Dr.</div>
+      <div class="card-body">
+        <span class="category">Вдохновение</span>
+        <h3>Dribbble</h3>
+        <p>Дизайн-концепции, идеи интерфейсов и визуальные эксперименты.</p>
+        <a class="visit" href="https://dribbble.com" target="_blank" rel="noopener">
+          <span>Открыть сайт</span><span>↗</span>
+        </a>
+      </div>
+    </article>
+
+    <div class="empty" id="empty">
+      Ничего не найдено. Попробуй другой запрос.
+    </div>
+
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="eyebrow">О проекте</div>
+  <h2>Дизайн начинается<br>с любопытства.</h2>
+  <p>
+    Forma — твоя личная коллекция ресурсов для дизайна.
+    Добавляй любимые сайты, меняй оформление и используй
+    эту страницу как основу для собственного проекта.
+  </p>
+  <a class="btn" href="#catalog">Назад к каталогу ↑</a>
+</section>
+
+</main>
+
+<footer id="footer">
+  <a class="logo" href="#">forma<span>.</span></a>
+  <span>Мой дизайн-проект · 2026</span>
+  <a href="#catalog">Каталог ресурсов ↑</a>
+</footer>
+
+</div>
+
+<script>
+const search = document.getElementById("search");
+const cards = [...document.querySelectorAll(".card")];
+const buttons = [...document.querySelectorAll(".filter")];
+const empty = document.getElementById("empty");
+
+let activeCategory = "Все";
+
+function filterCards() {
+  const query = search.value.toLowerCase().trim();
+  let count = 0;
+
+  cards.forEach(card => {
+    const categoryMatch =
+      activeCategory === "Все" ||
+      card.dataset.category === activeCategory;
+
+    const textMatch =
+      (card.dataset.name + " " + card.innerText)
+      .toLowerCase().includes(query);
+
+    const visible = categoryMatch && textMatch;
+    card.style.display = visible ? "block" : "none";
+
+    if (visible) count++;
+  });
+
+  empty.style.display = count ? "none" : "block";
+}
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    activeCategory = button.dataset.filter;
+
+    buttons.forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
+
+    filterCards();
+  });
+});
+
+search.addEventListener("input", filterCards);
+</script>
+
+</body>
+</html>
